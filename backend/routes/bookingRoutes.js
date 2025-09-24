@@ -13,17 +13,15 @@ const {
 } = require('../controllers/bookingController');
 
 const { createBookingValidator, updateBookingValidator } = require('../validators/bookingValidators');
-const validateRequest = require('../middlewares/validateRequest'); // your validator middleware
+const validateRequest = require('../middlewares/validateRequest');
 
-// Routes
-router.get('/', listBookings);            // GET all bookings
-router.get('/search', searchBookings);    // search bookings
-router.get('/:id/qr', getBookingQRCode);  // get QR for booking
-router.get('/:id', getBookingById);       // get booking by ID
+router.get('/', listBookings);
+router.get('/search', searchBookings);
+router.get('/:id/qr', getBookingQRCode);
+router.get('/:id', getBookingById);
 
-// Use validators + validateRequest middleware before controller
-router.post('/', createBookingValidator, validateRequest, createBooking);          // create booking
-router.put('/:id', updateBookingValidator, validateRequest, updateBooking);        // update booking
-router.delete('/:id', deleteBooking);     // delete booking
+router.post('/', createBookingValidator, validateRequest, createBooking);
+router.put('/:id', updateBookingValidator, validateRequest, updateBooking);
+router.delete('/:id', deleteBooking);
 
 module.exports = router;
