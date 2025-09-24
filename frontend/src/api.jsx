@@ -1,8 +1,16 @@
 // src/api.js
 import axios from 'axios';
 
-const API = axios.create({
+/*const API = axios.create({
   baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5000/api',
+});*/
+
+const API = axios.create({
+  baseURL:
+    process.env.REACT_APP_API_URL ||
+    (process.env.NODE_ENV === 'development'
+      ? 'http://localhost:5000/api'
+      : 'https://car-washrepo-1.onrender.com/api'),
 });
 
 export const fetchBookings = async (params = {}) => {
