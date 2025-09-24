@@ -19,6 +19,12 @@ app.use(morgan('dev'));
 // quick API root so GET /api won't 404 (fixes a lot of frontend dev noise)
 app.get('/api', (req, res) => res.json({ success: true, message: 'API root. Use /api/bookings' }));
 
+// NEW
+app.get('/', (req, res) => {
+  res.send('Car Wash Backend is running 🚀. Use /api for API endpoints.');
+});
+
+
 // Routes
 app.use('/api/bookings', bookingRoutes);
 
